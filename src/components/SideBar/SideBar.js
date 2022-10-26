@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const SideBar = () => {
 
 const [courses, setCourses] = useState([]);
-console.log(courses)
+// console.log(courses)
 
 useEffect(() => {
 
