@@ -1,9 +1,11 @@
 import React from 'react';
+import Course from '../../../course/Course';
+import Courses from '../../../Courses/Courses';
 
 const Home = () => {
     return (
         <div>
-            <h1>This is Home</h1>
+            <Courses></Courses>
         </div>
     );
 };
