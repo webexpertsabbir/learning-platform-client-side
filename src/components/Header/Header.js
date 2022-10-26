@@ -15,14 +15,11 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                     </Nav>
-                    <Nav>
+                    <Nav className='py-3'>
                         
                         <Link to='/' className='text-light text-decoration-none'>Home</Link>
-                        <Link to='/courses' className='text-light text-decoration-none'>Course</Link>
-                        
-                        <Nav.Link eventKey={2}>
-                            Dank memes
-                        </Nav.Link>
+                        <Link to='/courses' className='text-light text-decoration-none ps-3'>Course</Link>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

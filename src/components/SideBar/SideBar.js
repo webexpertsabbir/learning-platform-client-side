@@ -16,11 +16,11 @@ useEffect(() => {
 
 }, [])
     return (
-        <div>
+        <div className='py-4 p-3 border rounded'>
             {
                 courses.map(course => <p key={course.id}>
-
-                   <Link to={`/course/${course.id}`}> {course.name}</Link>
+  
+                <Link to={`/course/${course.id}`} className="text-decoration-none fw-semibold"> {course.name}</Link>
                 </p>)
             }
         </div>
