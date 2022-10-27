@@ -1,10 +1,25 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const SignIn = () => {
+    const {providerLogin} = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider()
+
+    const handelGoogleSignIn = () =>{
+        providerLogin(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.log(error))
+        
+    }
     return (
         <div>
             <Form >
@@ -28,7 +43,7 @@ const SignIn = () => {
             </Form.Text>
         </Form>
         <hr />
-            <Button variant="outline-primary">
+            <Button onClick={handelGoogleSignIn} variant="outline-primary">
                 <FaGoogle className='me-1'></FaGoogle>
                 Google
             </Button>{' '}

@@ -1,14 +1,22 @@
 import React from 'react';
 import { useContext } from 'react';
+import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { FaUser } from "react-icons/fa";
 
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handelLogOut = () =>{
+        logOut()
+        .then(() => {})
+        .catch(error => console.log(error))
+    }
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -23,10 +31,24 @@ const Header = () => {
                             <Link to='/blog' className='text-light text-decoration-none ps-3'>Blog</Link>
                         </Nav>
                         <Nav className='py-3'>
-                            <Link to='/login' className='text-light text-decoration-none ps-3'>Sign In</Link>
-                            <Link to='/register' className='text-light text-decoration-none ps-3'>Sign Up</Link>
-                            <Link className='text-light text-decoration-none ps-3'>{user?.displayName}</Link>
 
+                            <span className='text-light text-decoration-none px-3'>
+                                {
+                                    user?.uid ?
+                                        <>
+                                        <span> {user?.displayName}</span>
+                                        <Image className='mx-2' style={{ width: "30px" }} roundedCircle src={user?.photoURL}></Image>
+                                        <Button onClick={handelLogOut} variant="light" size="sm">Log Out</Button>
+                                        </>
+                                        :
+                                        <>
+                                            <Link to='/login' className='text-light text-decoration-none ps-3'>Sign In</Link>
+                                            <Link to='/register' className='text-light text-decoration-none mx-3'>Sign Up</Link>
+                                            <FaUser></FaUser>
+                                        </>
+
+                                }
+                            </span>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
