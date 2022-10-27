@@ -10,7 +10,7 @@ const [courses, setCourses] = useState([]);
 
 useEffect(() => {
 
-    fetch('http://localhost:5000/course')
+    fetch('https://mark-server-side-webexpertsabbir.vercel.app/course')
     .then(res => res.json())
     .then(data => setCourses(data))
 
