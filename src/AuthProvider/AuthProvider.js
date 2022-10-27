@@ -14,6 +14,7 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider);
     }
 
+    
     const logOut = () =>{
         return signOut(auth)
     }
